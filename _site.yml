@@ -9,7 +9,10 @@ navbar:
     - text: "Pagetitle"
       href: pagename.html
 
+
 output:
   html_document:
     theme: default
-    highlight: default
+    highlight: kate
+    
+    
