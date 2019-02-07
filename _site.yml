@@ -1,4 +1,4 @@
-name: "my-website"
+name: "Ashley Holliday"
 output_dir: "."
 
 navbar:
@@ -14,5 +14,7 @@ output:
   html_document:
     theme: default
     highlight: kate
+    
+
     
     

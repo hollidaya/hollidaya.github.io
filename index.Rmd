@@ -1,5 +1,15 @@
 ---
-title: "My Website"
+# title: "Home"
+# author: "Ashley Holliday"
+# output: html_document
+---
+---
+title: "Welcome"
 ---
 
-Hello, Website!
+
+Welcome to my site! Here you will find my resume, interstes, as well as a sample performance portfolio! For further inquiries, please contact me at the email provided.
+
+
+![](~/GitHub Repositories/hollidaya.github.io/IMG_0720-1.jpg)
+

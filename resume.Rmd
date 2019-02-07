@@ -1,5 +1,39 @@
 ---
-title: "John Doe's Resume"
+# title: "Resume"
+# author: "Ashley Holliday"
+# date: "2/7/2019"
+# output: html_document
 ---
+## Ashley Holliday
 
-Resume content.
+
+#### Contact me
+hollidaya@appstate.edu
+
+### Education
+* Appalachian State University - Boone, NC
+  * BS in Mathematics - Actuarial Science (Dec 2019)
+    * Minor in Statistics
+    * Minor in Dance
+        * Momentum Dance Club
+        * App State Swim Team
+        
+
+### Experience
+#### Work
+* Food and Beverage Manager - Blowing Rock Country Club - 2016-present
+    * hiring manager, staff relations - scheduling, contact for all beer wine and liqour orders, Wine Club coordinator, menu design
+* Tutor - Appalachian State University - present
+    *  calculus, algebra, business calculus
+* Cast Member - Horn in the West Outdoor Drama - 2016
+    * nightly performances throughout summer
+
+
+#### Computer Training
+##### Efficient in:
+* RStudio
+* Microsoft Excel
+* Maplesoft
+* Github
+* Microsoft PowerPoint
+* Microsoft Word
