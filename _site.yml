@@ -2,12 +2,12 @@ name: "Ashley Holliday"
 output_dir: "."
 
 navbar:
-  title: "My Website"
+  title: "Ashley Holliday"
   left:
     - text: "Resume"
       href: resume.html
-    - text: "Pagetitle"
-      href: pagename.html
+    - text: "Sample Portfolio"
+      href: Portfolio.html
 
 
 output:

@@ -1,0 +1,23 @@
+---
+title: "Portfolio"
+author: "Ashley Holliday"
+date: "2/10/2019"
+output: html_document
+---
+#Ashley Holliday
+
+Here you will find a brief sample of photos from past works. The following photos are from performances taking place here at App state, as well as from student photographers. Please contact me at hollidaya@appstate.edu for further inquiries.
+
+
+
+![](https://raw.githubusercontent.com/hollidaya/hollidaya.github.io/master/IMG_0718-1.jpeg)
+
+![](https://raw.githubusercontent.com/hollidaya/hollidaya.github.io/8f568387c7422bca932024b4e88bf8c17dd57824/IMG_0720-1.jpeg)
+
+![](https://raw.githubusercontent.com/hollidaya/hollidaya.github.io/master/IMG_0719-1.jpeg)
+
+
+![](https://raw.githubusercontent.com/hollidaya/hollidaya.github.io/master/IMG_0368.jpeg)
+
+![](https://raw.githubusercontent.com/hollidaya/hollidaya.github.io/master/IMG_0731.jpeg)
+**I am not a recent graduate nor have I reached my final semester at App. This is a misprint in an article.  

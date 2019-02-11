@@ -4,12 +4,20 @@
 # output: html_document
 ---
 ---
-title: "Welcome"
+title: "Home"
 ---
 
 
-Welcome to my site! Here you will find my resume, interstes, as well as a sample performance portfolio! For further inquiries, please contact me at the email provided.
+Hello! Welcome to my site! Here you will find my resume, interstes, as well as a sample performance portfolio!
+
+I am a mathematic major with a concrentration in business at Appalachian State University. While I love math, and all I can accomplish woth it, I have another passion as well. For 19 years, I have been training as a classical ballet dancer! After graduation, I hope to perform for a while before going back to school to persue my masters in mathematics!
+
+I have loved ballet for as long as I can remember. Here is a link to my favorite performance by my favotite dancer, Marianela Nuñez.
+(https://www.youtube.com/watch?v=XfmSv0z205s)
 
 
-![](~/GitHub Repositories/hollidaya.github.io/IMG_0720-1.jpg)
+
+
+![](https://raw.githubusercontent.com/hollidaya/hollidaya.github.io/8f568387c7422bca932024b4e88bf8c17dd57824/IMG_0720-1.jpeg)
+
 
