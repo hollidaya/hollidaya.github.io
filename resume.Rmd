@@ -1,39 +1,33 @@
 ---
 # title: "Resume"
 # author: "Ashley Holliday"
-# date: "2/7/2019"
 # output: html_document
 ---
-## Ashley Holliday
+##Ashley Holliday
 
 
-#### Contact me
-hollidaya@appstate.edu
+ashley.p.holliday@gmail.com |
+817-734-7346
 
-### Education
+###Education
 * Appalachian State University - Boone, NC
-  * BS in Mathematics - Actuarial Science (Dec 2019)
+  * BS in Mathematics - Concentration in Business (Dec 2019)
     * Minor in Statistics
     * Minor in Dance
-        * Momentum Dance Club
-        * App State Swim Team
         
 
-### Experience
-#### Work
+###Experience
 * Food and Beverage Manager - Blowing Rock Country Club - 2016-present
-    * hiring manager, staff relations - scheduling, contact for all beer wine and liqour orders, Wine Club coordinator, menu design
-* Tutor - Appalachian State University - present
-    *  calculus, algebra, business calculus
-* Cast Member - Horn in the West Outdoor Drama - 2016
-    * nightly performances throughout summer
+    * staff relations - hiring, scheduling, and communication with all waitstaff
+    * beverage coordination - ordering and organization of all beverages used throughout club
+    * floor management - oversight of main restaurant, specializing in guest relations and staff coordination
+* Personal Assistant to CEO - Alpha Custom Extrusions - Summer 2015 and 2016
 
 
 #### Computer Training
-##### Efficient in:
+##### Proficient in:
 * RStudio
 * Microsoft Excel
 * Maplesoft
 * Github
-* Microsoft PowerPoint
-* Microsoft Word
+* Microsoft Office

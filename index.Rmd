@@ -1,23 +1,27 @@
 ---
-# title: "Home"
+# title: "Key Knowledge and Skills"
 # author: "Ashley Holliday"
 # output: html_document
 ---
 ---
-title: "Home"
+title: "Welcome"
 ---
 
 
 Thank you for visiting my site. Here you will find my professional portfolio. Included are my resume, a brief section of an interview, and a few pesonal projects demonstrating the scope of my work.
 
-I am a mathematic major with a concrentration in business at Appalachian State University. While I love math, and all I can accomplish woth it, I have another passion as well. For 19 years, I have been training as a classical ballet dancer! After graduation, I hope to perform for a while before going back to school to persue my masters in mathematics!
+Key Knowledge and Skills
 
-I have loved ballet for as long as I can remember. Here is a link to my favorite performance by my favotite dancer, Marianela Nuñez.
-(https://www.youtube.com/watch?v=XfmSv0z205s)
-
-
+RStudio Proficiency - data filtering and manipulation, basic web design, data analysis and visualization
+Excel Proficiency - project and budget analysis, loan amortization
 
 
-![](https://raw.githubusercontent.com/hollidaya/hollidaya.github.io/8f568387c7422bca932024b4e88bf8c17dd57824/IMG_0720-1.jpeg)
 
+I have learned to be adaptable in a high-pressure environment, working to stay within time constraints when sudden changes arise. Through this, I am confident in my ability to learn to experience, and develop newly acquired skills without loss of efficiency. 
+
+Through my education, I have a strong foundation in statistics based code writing, using RStudio. Through this I am able to provide visualizations of statistical data analysis - a key component in risk analysis and finance-based decisions I’ve extended my utilization of code writing into other areas including graphic design and website construction*. I feel that being able to continue to grow with the use of new technologies in a role in keeping up with the demands of such a dynamic economy.
+
+
+
+*This site was created through the use of RStudio and GitHub. 
 

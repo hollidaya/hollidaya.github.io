@@ -8,6 +8,10 @@ navbar:
       href: resume.html
     - text: "Sample Portfolio"
       href: Portfolio.html
+    - text: "Behavioral-Interview"
+      href: Behavioral-Interview-Questions.html
+    - text: "Sample Portfolio"
+      href: Portfolio.html
 
 
 output:

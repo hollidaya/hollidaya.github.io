@@ -1,26 +1,23 @@
 ---
-title: "Behavioral Interview"
-author: "Ashley Holliday"
+title: "Behavioral Interview Sample"
 
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
-1.    Describe a situation where you had to work with someone who was difficult.  How was the person difficult, and how did you handle it?
+###1.    Describe a situation where you had to work with someone who was difficult.  How was the person difficult, and how did you handle it?
 
+#####  At my current job, I was in charge of an employee who was at first glance, unwilling to learn. Whenever I would point out her mistakes and try to help her correct them, she would get defensive and act like she already knew how to proceed. Her performance eventually began to affect other employees. I decided to sit down and talk with her about what was going on. I talked to her about how it’s okay to make mistakes, but the only way to grow is to learn from them. In the end, I think it was all a matter of confidence and communication. I let her know that I often make mistakes, but it’s no reason to give up. The only way to get better is to fail first. Not only did she improve at work, but I felt like I had genuinely helped her. This gave me a sense of accomplishment. It's just important to recognize your own accomplishments as well as others'. 
 	
 
-2.     What are your job related values?
+###2.     What are your job related values?
 
-	I currently, and have on and off, for the past 4 years, managed a country club. I enjoy what I do, but I have found it difficult to be in charge of people my own age. Through this, I’ve realized a few things. 
-	At the forefront, a positive attitude can do wonders for a team of people. Negativity spreads quickly. This can be put to ease by encouraging positivity and a healthy work environment. 
-	Additionally, there is one other idea that comes to mind. As a manager, I try never to ask anyone to do something that I can already do. I believe it is easy to get a little lazy, especially when in charge of large numbers of people. This can force a sense of solidarity and teamwork, which makes working a little easier. 
+#####	I currently, and have on and off, for the past 4 years, managed a country club. I enjoy what I do, but I have found it difficult to be in charge of people my own age. It can be difficult to find balance between being a friend and a leader. By trying to find the balance between supporter and leader, I’ve realized what I value in the workplace. 
+#####	At the forefront, a positive attitude can do wonders for a team of people. I often find it is best to leave "outside matters" at the door when I get to work. This separates personal lives from the workplace. For me, this is important because most of the people I work with feed off of my energy when I arrive. Attitudes are contagious, and it is important to spread positivity and not negativity. By encouraging positivity and maintaining healthy work environment, a team of people can be brought together. This can lead to a sense of solidarity and teamwork, which makes working a lot easier.
 
 
-3.                    Tell me about a time when you had too many things to do and you were required to prioritize your tasks.
 
-In a recent semester, I tried prioritizing work over school. I was regularly working 50 hours a week, along with 18 hours of class. Needless to say, it did not go well. I had gotten the idea into my head that I needed to maintain my responsibilities at work in order to ease financial burden during school. This was entirely counterintuitive, as I was not doing well in school, as a result of this. Instead of finding a healthy balance between work, school, and life, I put everything I had into work. 
-I ended up not doing well the entire semester, but I learned a very valuable lesson. For me personally, I need balance, in order to prioritize. It took an entire semester, but I figured things out the hard way. By experiencing failure, I was able to learn more about myself and about how I need to operate in order to succeed in a healthy way. 
+###3.                    Tell me about a time when you had too many things to do and you were required to prioritize your tasks.
+
+##### In a recent semester, I tried prioritizing work over school. I was regularly working 50 hours a week, along with 18 hours of class. Needless to say, it did not go well. I had gotten the idea into my head that I needed to maintain my responsibilities at work in order to ease financial burden during school. This was entirely counterintuitive, as I was not doing well in school, as a result of this. Instead of finding a healthy balance between work, school, and life, I put everything I had into work. 
+##### I ended up not doing well the entire semester, but I learned a very valuable lesson. For me personally, I need balance, in order to prioritize. It took an entire semester, but I figured things out the hard way. By experiencing failure, I was able to learn more about myself and about how I need to operate in order to succeed in a healthy way. 
