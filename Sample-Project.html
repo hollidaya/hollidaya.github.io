@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Ashley Holliday - in collaboration with Cameron Lyons and Tyler Borden" />
+
+
+<title>Sample Project</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Ashley Holliday</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="resume.html">Resume</a>
+</li>
+<li>
+  <a href="Sample-Project.html">Sample Project</a>
+</li>
+<li>
+  <a href="Behavioral-Interview-Questions.html">Behavioral-Interview</a>
+</li>
+<li>
+  <a href="Portfolio.html">Sample Portfolio</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Sample Project</h1>
+<h4 class="author">Ashley Holliday - in collaboration with Cameron Lyons and Tyler Borden</h4>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#powerball-setup">Powerball Setup</a><ul>
+<li><a href="#jackpot-values-over-time">Jackpot Values Over Time</a></li>
+<li><a href="#fairness-and-independence">Fairness and Independence</a></li>
+</ul></li>
+</ul>
+</div>
+
+<p>Last Updated: Wednesday, October 02, 2019</p>
+<hr>
+<div id="powerball-setup" class="section level1">
+<h1>Powerball Setup</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">winning_numbers &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;winning_numbers.csv&quot;</span>)
+winning_numbers<span class="op">$</span>Draw.Date &lt;-<span class="st"> </span><span class="kw">mdy</span>(winning_numbers<span class="op">$</span>Draw.Date)
+<span class="kw">names</span>(winning_numbers)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;drawdate&quot;</span>
+
+url &lt;-<span class="st"> &quot;http://www.lottofactor.com/script/jackpot_history/draw_date/101&quot;</span>
+jackpot_vals &lt;-<span class="st"> </span><span class="kw">readHTMLTable</span>(url)[[<span class="dv">18</span>]] <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate_all</span>(<span class="kw">funs</span>(<span class="kw">str_replace</span>(., <span class="dt">pattern =</span> <span class="st">&quot;Â&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate_all</span>(<span class="kw">funs</span>(<span class="kw">str_trim</span>(., <span class="st">&quot;left&quot;</span>)))
+<span class="kw">names</span>(jackpot_vals)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;draw_date&quot;</span>
+<span class="kw">names</span>(jackpot_vals)[<span class="dv">2</span>] &lt;-<span class="st"> &quot;jackpot_value&quot;</span>
+jackpot_vals &lt;-<span class="st"> </span>jackpot_vals <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">separate</span>(draw_date, <span class="kw">c</span>(<span class="st">&quot;day&quot;</span>, <span class="st">&quot;date&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)
+jackpot_vals<span class="op">$</span>date &lt;-<span class="st"> </span><span class="kw">mdy</span>(jackpot_vals<span class="op">$</span>date)
+
+inflation_adj &lt;-<span class="st"> </span><span class="kw">inflation_adjust</span>(<span class="dv">2019</span>)
+inflation_adj &lt;-<span class="st"> </span>inflation_adj <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2010</span>)
+inflation_adj<span class="op">$</span>year &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(inflation_adj<span class="op">$</span>year)
+
+powerball &lt;-<span class="st"> </span>winning_numbers <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">separate</span>(Winning.Numbers, <span class="kw">c</span>(<span class="st">&quot;white1&quot;</span>, <span class="st">&quot;white2&quot;</span>, <span class="st">&quot;white3&quot;</span>, <span class="st">&quot;white4&quot;</span>, <span class="st">&quot;white5&quot;</span>, <span class="st">&quot;powerball&quot;</span>))
+powerball<span class="op">$</span>Multiplier &lt;-<span class="st"> </span><span class="ot">NULL</span>
+powerball &lt;-<span class="st"> </span><span class="kw">left_join</span>(powerball, jackpot_vals, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;drawdate&quot;</span> =<span class="st"> &quot;date&quot;</span>))
+powerball<span class="op">$</span><span class="st">`</span><span class="dt">Â Change</span><span class="st">`</span> &lt;-<span class="st"> </span><span class="ot">NULL</span>
+powerball<span class="op">$</span>jackpot_value &lt;-<span class="st"> </span><span class="kw">str_replace_all</span>(powerball<span class="op">$</span>jackpot_value, <span class="kw">fixed</span>(<span class="st">&quot;$&quot;</span>), <span class="st">&quot;&quot;</span>)
+powerball &lt;-<span class="st"> </span>powerball <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">separate</span>(jackpot_value, <span class="kw">c</span>(<span class="st">&#39;jackpot_value&#39;</span>, <span class="st">&#39;Million&#39;</span>), <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)
+<span class="kw">names</span>(powerball)[<span class="dv">8</span>] &lt;-<span class="st"> &quot;drawday&quot;</span>
+powerball &lt;-<span class="st"> </span>powerball[<span class="kw">c</span>(<span class="st">&quot;drawdate&quot;</span>, <span class="st">&quot;drawday&quot;</span>, <span class="st">&quot;white1&quot;</span>, <span class="st">&quot;white2&quot;</span>, <span class="st">&quot;white3&quot;</span>, <span class="st">&quot;white4&quot;</span>, <span class="st">&quot;white5&quot;</span>, <span class="st">&quot;powerball&quot;</span>, <span class="st">&quot;jackpot_value&quot;</span>, <span class="st">&quot;Million&quot;</span>)]
+powerball &lt;-<span class="st"> </span><span class="kw">mutate_at</span>(powerball, <span class="kw">vars</span>(white1<span class="op">:</span>jackpot_value), <span class="kw">funs</span>(as.numeric))
+powerball<span class="op">$</span>jackpot_value &lt;-<span class="st">  </span><span class="kw">ifelse</span>(powerball<span class="op">$</span>Million <span class="op">==</span><span class="st"> &#39;Million&#39;</span>, powerball<span class="op">$</span>jackpot_value, powerball<span class="op">$</span>jackpot_value <span class="op">*</span><span class="st"> </span><span class="dv">1000</span>)
+powerball<span class="op">$</span>Million &lt;-<span class="st"> </span><span class="ot">NULL</span>
+powerball<span class="op">$</span>year &lt;-<span class="st"> </span><span class="kw">year</span>(powerball<span class="op">$</span>drawdate)
+powerball &lt;-<span class="st"> </span><span class="kw">left_join</span>(powerball, inflation_adj, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;year&quot;</span> =<span class="st"> &quot;year&quot;</span>))
+powerball<span class="op">$</span>year &lt;-<span class="st"> </span><span class="ot">NULL</span>
+powerball<span class="op">$</span>pct_increase &lt;-<span class="st"> </span><span class="ot">NULL</span>
+powerball<span class="op">$</span>base_year &lt;-<span class="st"> </span><span class="ot">NULL</span>
+powerball<span class="op">$</span>avg_cpi &lt;-<span class="st"> </span><span class="ot">NULL</span>
+powerball &lt;-<span class="st"> </span>powerball <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_row</span>(<span class="dt">drawdate =</span> <span class="st">&quot;2010-01-30&quot;</span>, <span class="dt">drawday =</span> <span class="st">&quot;SAT&quot;</span>, <span class="dt">white1 =</span> <span class="dv">6</span>, <span class="dt">white2 =</span> <span class="dv">26</span>, <span class="dt">white3 =</span> <span class="dv">35</span>, <span class="dt">white4 =</span> <span class="dv">47</span>, <span class="dt">white5 =</span> <span class="dv">48</span>, <span class="dt">powerball =</span> <span class="dv">21</span>, <span class="dt">jackpot_value =</span> <span class="fl">92.5</span>, <span class="dt">adj_value =</span> <span class="fl">0.86</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_row</span>(<span class="dt">drawdate =</span> <span class="st">&quot;2010-01-27&quot;</span>, <span class="dt">drawday =</span> <span class="st">&quot;WED&quot;</span>, <span class="dt">white1 =</span> <span class="dv">6</span>, <span class="dt">white2 =</span> <span class="dv">15</span>, <span class="dt">white3 =</span> <span class="dv">20</span>, <span class="dt">white4 =</span> <span class="dv">26</span>, <span class="dt">white5 =</span> <span class="dv">31</span>, <span class="dt">powerball =</span> <span class="dv">9</span>, <span class="dt">jackpot_value =</span> <span class="fl">77.5</span>, <span class="dt">adj_value =</span> <span class="fl">0.86</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_row</span>(<span class="dt">drawdate =</span> <span class="st">&quot;2010-01-23&quot;</span>, <span class="dt">drawday =</span> <span class="st">&quot;SAT&quot;</span>, <span class="dt">white1 =</span> <span class="dv">15</span>, <span class="dt">white2 =</span> <span class="dv">16</span>, <span class="dt">white3 =</span> <span class="dv">20</span>, <span class="dt">white4 =</span> <span class="dv">42</span>, <span class="dt">white5 =</span> <span class="dv">53</span>, <span class="dt">powerball =</span> <span class="dv">17</span>, <span class="dt">jackpot_value =</span> <span class="dv">65</span>, <span class="dt">adj_value =</span> <span class="fl">0.86</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_row</span>(<span class="dt">drawdate =</span> <span class="st">&quot;2010-01-20&quot;</span>, <span class="dt">drawday =</span> <span class="st">&quot;WED&quot;</span>, <span class="dt">white1 =</span> <span class="dv">15</span>, <span class="dt">white2 =</span> <span class="dv">32</span>, <span class="dt">white3 =</span> <span class="dv">43</span>, <span class="dt">white4 =</span> <span class="dv">44</span>, <span class="dt">white5 =</span> <span class="dv">46</span>, <span class="dt">powerball =</span> <span class="dv">19</span>, <span class="dt">jackpot_value =</span> <span class="fl">53.4</span>, <span class="dt">adj_value =</span> <span class="fl">0.86</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_row</span>(<span class="dt">drawdate =</span> <span class="st">&quot;2010-01-16&quot;</span>, <span class="dt">drawday =</span> <span class="st">&quot;SAT&quot;</span>, <span class="dt">white1 =</span> <span class="dv">7</span>, <span class="dt">white2 =</span> <span class="dv">8</span>, <span class="dt">white3 =</span> <span class="dv">23</span>, <span class="dt">white4 =</span> <span class="dv">41</span>, <span class="dt">white5 =</span> <span class="dv">55</span>, <span class="dt">powerball =</span> <span class="dv">23</span>, <span class="dt">jackpot_value =</span> <span class="fl">41.9</span>, <span class="dt">adj_value =</span> <span class="fl">0.86</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_row</span>(<span class="dt">drawdate =</span> <span class="st">&quot;2010-01-13&quot;</span>, <span class="dt">drawday =</span> <span class="st">&quot;WED&quot;</span>, <span class="dt">white1 =</span> <span class="dv">8</span>, <span class="dt">white2 =</span> <span class="dv">11</span>, <span class="dt">white3 =</span> <span class="dv">15</span>, <span class="dt">white4 =</span> <span class="dv">32</span>, <span class="dt">white5 =</span> <span class="dv">50</span>, <span class="dt">powerball =</span> <span class="dv">27</span>, <span class="dt">jackpot_value =</span> <span class="fl">30.4</span>, <span class="dt">adj_value =</span> <span class="fl">0.86</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_row</span>(<span class="dt">drawdate =</span> <span class="st">&quot;2010-01-09&quot;</span>, <span class="dt">drawday =</span> <span class="st">&quot;SAT&quot;</span>, <span class="dt">white1 =</span> <span class="dv">20</span>, <span class="dt">white2 =</span> <span class="dv">41</span>, <span class="dt">white3 =</span> <span class="dv">44</span>, <span class="dt">white4 =</span> <span class="dv">50</span>, <span class="dt">white5 =</span> <span class="dv">54</span>, <span class="dt">powerball =</span> <span class="dv">22</span>, <span class="dt">jackpot_value =</span> <span class="dv">25</span>, <span class="dt">adj_value =</span> <span class="fl">0.86</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_row</span>(<span class="dt">drawdate =</span> <span class="st">&quot;2010-01-06&quot;</span>, <span class="dt">drawday =</span> <span class="st">&quot;WED&quot;</span>, <span class="dt">white1 =</span> <span class="dv">20</span>, <span class="dt">white2 =</span> <span class="dv">27</span>, <span class="dt">white3 =</span> <span class="dv">29</span>, <span class="dt">white4 =</span> <span class="dv">56</span>, <span class="dt">white5 =</span> <span class="dv">58</span>, <span class="dt">powerball =</span> <span class="dv">31</span>, <span class="dt">jackpot_value =</span> <span class="dv">20</span>, <span class="dt">adj_value =</span> <span class="fl">0.86</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_row</span>(<span class="dt">drawdate =</span> <span class="st">&quot;2010-01-02&quot;</span>, <span class="dt">drawday =</span> <span class="st">&quot;SAT&quot;</span>, <span class="dt">white1 =</span> <span class="dv">3</span>, <span class="dt">white2 =</span> <span class="dv">7</span>, <span class="dt">white3 =</span> <span class="dv">23</span>, <span class="dt">white4 =</span> <span class="dv">27</span>, <span class="dt">white5 =</span> <span class="dv">42</span>, <span class="dt">powerball =</span> <span class="dv">37</span>, <span class="dt">jackpot_value =</span> <span class="dv">25</span>, <span class="dt">adj_value =</span> <span class="fl">0.86</span>)
+powerball<span class="op">$</span>jackpot_value_adj &lt;-<span class="st"> </span>powerball<span class="op">$</span>jackpot_value <span class="op">*</span><span class="st"> </span>powerball<span class="op">$</span>adj_value
+powerball<span class="op">$</span>adj_value &lt;-<span class="st"> </span><span class="ot">NULL</span></code></pre></div>
+<div id="jackpot-values-over-time" class="section level2">
+<h2>Jackpot Values Over Time</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cols &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;With Inflation&quot;</span> =<span class="st"> &quot;#f04546&quot;</span>, <span class="st">&quot;Without Inflation&quot;</span> =<span class="st"> &quot;#FFFFFF&quot;</span>)
+
+<span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> powerball, <span class="kw">aes</span>(<span class="dt">x =</span> drawdate, <span class="dt">y =</span> jackpot_value, <span class="dt">color =</span> <span class="st">&quot;Without Inflation&quot;</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> powerball, <span class="kw">aes</span>(<span class="dt">x =</span> drawdate, <span class="dt">y =</span> jackpot_value_adj, <span class="dt">color =</span> <span class="st">&quot;With Inflation&quot;</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">as.Date</span>(<span class="st">&quot;2012-01-15&quot;</span>), <span class="dt">ymax =</span> <span class="dv">350</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="kw">as.Date</span>(<span class="st">&quot;2011-10-07&quot;</span>), <span class="dt">y =</span> <span class="dv">800</span>, 
+           <span class="dt">label =</span> <span class="st">&quot;Minimum Jackpot Increase&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">angle =</span> <span class="dv">90</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">as.Date</span>(<span class="st">&quot;2015-04-10&quot;</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="kw">as.Date</span>(<span class="st">&quot;2015-01-10&quot;</span>), <span class="dt">y =</span> <span class="dv">800</span>, 
+           <span class="dt">label =</span> <span class="st">&quot;Pool Increase&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">angle =</span> <span class="dv">90</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">1500</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Powerball Winnings&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Date of Drawing&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Jackpot Value (Millions)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_date</span>(<span class="dt">date_breaks =</span> <span class="st">&quot;1 year&quot;</span>, <span class="dt">date_labels =</span> <span class="st">&quot;%Y&quot;</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="kw">as.Date</span>(<span class="st">&quot;2010-01-02&quot;</span>), <span class="kw">as.Date</span>(<span class="st">&quot;2019-04-13&quot;</span>))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,<span class="dt">values =</span> cols) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1500</span>, <span class="dv">100</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="st">&quot;royalblue3&quot;</span>),
+        <span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="st">&quot;royalblue3&quot;</span>),
+        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="st">&quot;white&quot;</span>),
+        <span class="dt">panel.grid =</span> <span class="kw">element_line</span>(<span class="st">&quot;royalblue2&quot;</span>),
+        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;white&quot;</span>),
+        <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;white&quot;</span>),
+        <span class="dt">axis.ticks =</span> <span class="kw">element_line</span>(<span class="st">&quot;royalblue2&quot;</span>),
+        <span class="dt">legend.background =</span>  <span class="kw">element_rect</span>(<span class="st">&quot;royalblue3&quot;</span>),
+        <span class="dt">legend.key =</span> <span class="kw">element_rect</span>(<span class="st">&quot;royalblue3&quot;</span>),
+        <span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>,
+        <span class="dt">legend.box.just =</span> <span class="st">&quot;right&quot;</span>)</code></pre></div>
+<p><img src="Sample-Project_files/figure-html/Powerball%20Plot%201-1.png" width="672" /></p>
+</div>
+<div id="fairness-and-independence" class="section level2">
+<h2>Fairness and Independence</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">before &lt;-<span class="st"> </span>powerball <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(drawdate <span class="op">&lt;=</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2015-10-04&quot;</span>))
+whiteBefore &lt;-<span class="st"> </span><span class="kw">c</span>(before<span class="op">$</span>white1, before<span class="op">$</span>white2, before<span class="op">$</span>white3, before<span class="op">$</span>white4, before<span class="op">$</span>white5)
+whiteBefore &lt;-<span class="st"> </span><span class="kw">data.frame</span>(whiteBefore)
+whiteBefore &lt;-<span class="st"> </span>whiteBefore <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(whiteBefore) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">count</span>()
+
+after &lt;-<span class="st"> </span>powerball <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(drawdate <span class="op">&gt;=</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2015-10-07&quot;</span>))
+whiteAfter &lt;-<span class="st"> </span><span class="kw">c</span>(after<span class="op">$</span>white1, after<span class="op">$</span>white2, after<span class="op">$</span>white3, after<span class="op">$</span>white4, after<span class="op">$</span>white5)
+whiteAfter &lt;-<span class="st"> </span><span class="kw">data.frame</span>(whiteAfter)
+whiteAfter &lt;-<span class="st"> </span>whiteAfter <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(whiteAfter) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">count</span>()
+
+combined &lt;-<span class="st"> </span><span class="kw">merge</span>(whiteBefore, whiteAfter, <span class="dt">by.x =</span> <span class="st">&quot;whiteBefore&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;whiteAfter&quot;</span>, <span class="dt">all.y =</span> <span class="ot">TRUE</span>)
+combined &lt;-<span class="st"> </span><span class="kw">gather</span>(combined, RuleChange, count, <span class="kw">c</span>(n.x, n.y))
+combined2 &lt;-<span class="st"> </span>combined <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(RuleChange) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">freq =</span> <span class="dv">100</span><span class="op">*</span>count<span class="op">/</span><span class="kw">sum</span>(count, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))
+
+<span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data =</span> combined2, <span class="kw">aes</span>(<span class="dt">x =</span> whiteBefore, <span class="dt">y =</span> freq, <span class="dt">fill =</span> RuleChange), <span class="dt">color =</span> <span class="st">&quot;grey20&quot;</span>, <span class="dt">size =</span> .<span class="dv">25</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>, <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;White Ball Frequency&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;White Ball Number&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Frequency (%)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">69</span>, <span class="dv">3</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="st">&quot;grey10&quot;</span>),
+        <span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="st">&quot;gray&quot;</span>),
+        <span class="dt">panel.grid.minor =</span> <span class="kw">element_line</span>(<span class="st">&quot;gray10&quot;</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="st">&quot;Rule Change&quot;</span>, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Before&quot;</span>, <span class="st">&quot;After&quot;</span>), <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;n.x&quot;</span> =<span class="st"> &quot;springgreen4&quot;</span>, <span class="st">&quot;n.y&quot;</span> =<span class="st"> &quot;red&quot;</span>)) </code></pre></div>
+<p><img src="Sample-Project_files/figure-html/Powerball%20Plot%202-1.png" width="672" /></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

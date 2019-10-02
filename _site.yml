@@ -6,8 +6,8 @@ navbar:
   left:
     - text: "Resume"
       href: resume.html
-    - text: "Sample Portfolio"
-      href: Portfolio.html
+    - text: "Sample Project"
+      href: Sample-Project.html
     - text: "Behavioral-Interview"
       href: Behavioral-Interview-Questions.html
     - text: "Sample Portfolio"

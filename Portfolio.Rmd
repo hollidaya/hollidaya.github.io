@@ -1,7 +1,6 @@
 ---
 title: "Portfolio"
 author: "Ashley Holliday"
-date: "2/10/2019"
 output: html_document
 ---
 #Ashley Holliday

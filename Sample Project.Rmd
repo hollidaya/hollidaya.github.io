@@ -1,0 +1,153 @@
+---
+title: "Sample Project"
+author: "Ashley Holliday - in collaboration with Cameron Lyons and Tyler Borden"
+output: 
+  html_document:
+    toc: TRUE
+    code_folding: hide
+    theme: yeti
+    highlight: kate
+---
+
+Last Updated: `r format(Sys.time(), "%A, %B %d, %Y")`
+
+<hr>
+
+```{r Setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+library(readr)
+library(dplyr)
+library(XML)
+library(stringr)
+library(blscrapeR)
+library(tidyr)
+library(readxl)
+library(lubridate)
+library(ggplot2)
+library(ggtern)
+```
+
+# Powerball Setup
+
+```{r Powerball Setup}
+winning_numbers <- read.csv("winning_numbers.csv")
+winning_numbers$Draw.Date <- mdy(winning_numbers$Draw.Date)
+names(winning_numbers)[1] <- "drawdate"
+
+url <- "http://www.lottofactor.com/script/jackpot_history/draw_date/101"
+jackpot_vals <- readHTMLTable(url)[[18]] %>% 
+  mutate_all(funs(str_replace(., pattern = "Â", replacement = ""))) %>% 
+  mutate_all(funs(str_trim(., "left")))
+names(jackpot_vals)[1] <- "draw_date"
+names(jackpot_vals)[2] <- "jackpot_value"
+jackpot_vals <- jackpot_vals %>%
+  separate(draw_date, c("day", "date"), sep = " ")
+jackpot_vals$date <- mdy(jackpot_vals$date)
+
+inflation_adj <- inflation_adjust(2019)
+inflation_adj <- inflation_adj %>%
+  filter(year >= 2010)
+inflation_adj$year <- as.numeric(inflation_adj$year)
+
+powerball <- winning_numbers %>%
+  separate(Winning.Numbers, c("white1", "white2", "white3", "white4", "white5", "powerball"))
+powerball$Multiplier <- NULL
+powerball <- left_join(powerball, jackpot_vals, by = c("drawdate" = "date"))
+powerball$`Â Change` <- NULL
+powerball$jackpot_value <- str_replace_all(powerball$jackpot_value, fixed("$"), "")
+powerball <- powerball %>%
+  separate(jackpot_value, c('jackpot_value', 'Million'), sep = " ")
+names(powerball)[8] <- "drawday"
+powerball <- powerball[c("drawdate", "drawday", "white1", "white2", "white3", "white4", "white5", "powerball", "jackpot_value", "Million")]
+powerball <- mutate_at(powerball, vars(white1:jackpot_value), funs(as.numeric))
+powerball$jackpot_value <-  ifelse(powerball$Million == 'Million', powerball$jackpot_value, powerball$jackpot_value * 1000)
+powerball$Million <- NULL
+powerball$year <- year(powerball$drawdate)
+powerball <- left_join(powerball, inflation_adj, by = c("year" = "year"))
+powerball$year <- NULL
+powerball$pct_increase <- NULL
+powerball$base_year <- NULL
+powerball$avg_cpi <- NULL
+powerball <- powerball %>%
+  add_row(drawdate = "2010-01-30", drawday = "SAT", white1 = 6, white2 = 26, white3 = 35, white4 = 47, white5 = 48, powerball = 21, jackpot_value = 92.5, adj_value = 0.86) %>%
+  add_row(drawdate = "2010-01-27", drawday = "WED", white1 = 6, white2 = 15, white3 = 20, white4 = 26, white5 = 31, powerball = 9, jackpot_value = 77.5, adj_value = 0.86) %>%
+  add_row(drawdate = "2010-01-23", drawday = "SAT", white1 = 15, white2 = 16, white3 = 20, white4 = 42, white5 = 53, powerball = 17, jackpot_value = 65, adj_value = 0.86) %>%
+  add_row(drawdate = "2010-01-20", drawday = "WED", white1 = 15, white2 = 32, white3 = 43, white4 = 44, white5 = 46, powerball = 19, jackpot_value = 53.4, adj_value = 0.86) %>%
+  add_row(drawdate = "2010-01-16", drawday = "SAT", white1 = 7, white2 = 8, white3 = 23, white4 = 41, white5 = 55, powerball = 23, jackpot_value = 41.9, adj_value = 0.86) %>%
+  add_row(drawdate = "2010-01-13", drawday = "WED", white1 = 8, white2 = 11, white3 = 15, white4 = 32, white5 = 50, powerball = 27, jackpot_value = 30.4, adj_value = 0.86) %>%
+  add_row(drawdate = "2010-01-09", drawday = "SAT", white1 = 20, white2 = 41, white3 = 44, white4 = 50, white5 = 54, powerball = 22, jackpot_value = 25, adj_value = 0.86) %>%
+  add_row(drawdate = "2010-01-06", drawday = "WED", white1 = 20, white2 = 27, white3 = 29, white4 = 56, white5 = 58, powerball = 31, jackpot_value = 20, adj_value = 0.86) %>%
+  add_row(drawdate = "2010-01-02", drawday = "SAT", white1 = 3, white2 = 7, white3 = 23, white4 = 27, white5 = 42, powerball = 37, jackpot_value = 25, adj_value = 0.86)
+powerball$jackpot_value_adj <- powerball$jackpot_value * powerball$adj_value
+powerball$adj_value <- NULL
+```
+
+## Jackpot Values Over Time
+
+```{r Powerball Plot 1}
+cols <- c("With Inflation" = "#f04546", "Without Inflation" = "#FFFFFF")
+
+ggplot() +
+  geom_line(data = powerball, aes(x = drawdate, y = jackpot_value, color = "Without Inflation")) +
+  geom_line(data = powerball, aes(x = drawdate, y = jackpot_value_adj, color = "With Inflation")) +
+  geom_vline(xintercept = as.Date("2012-01-15"), ymax = 350) +
+  annotate("text", x = as.Date("2011-10-07"), y = 800, 
+           label = "Minimum Jackpot Increase", color = "white", angle = 90) +
+  geom_vline(xintercept = as.Date("2015-04-10")) +
+  annotate("text", x = as.Date("2015-01-10"), y = 800, 
+           label = "Pool Increase", color = "white", angle = 90) +
+  coord_cartesian(ylim = c(20, 1500)) +
+  ggtitle("Powerball Winnings") +
+  labs(x = "Date of Drawing", y = "Jackpot Value (Millions)") +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y", limits = c(as.Date("2010-01-02"), as.Date("2019-04-13"))) +
+  scale_colour_manual(name = "",values = cols) +
+  scale_y_continuous(breaks = seq(0, 1500, 100)) +
+  theme(panel.background = element_rect("royalblue3"),
+        plot.background = element_rect("royalblue3"),
+        plot.title = element_text("white"),
+        panel.grid = element_line("royalblue2"),
+        axis.title = element_text(color = "white"),
+        axis.text = element_text(colour = "white"),
+        axis.ticks = element_line("royalblue2"),
+        legend.background =  element_rect("royalblue3"),
+        legend.key = element_rect("royalblue3"),
+        legend.position = "bottom",
+        legend.box.just = "right")
+```
+
+## Fairness and Independence
+
+```{r Powerball Plot 2}
+before <- powerball %>%
+  filter(drawdate <= as.Date("2015-10-04"))
+whiteBefore <- c(before$white1, before$white2, before$white3, before$white4, before$white5)
+whiteBefore <- data.frame(whiteBefore)
+whiteBefore <- whiteBefore %>%
+  group_by(whiteBefore) %>%
+  count()
+
+after <- powerball %>%
+  filter(drawdate >= as.Date("2015-10-07"))
+whiteAfter <- c(after$white1, after$white2, after$white3, after$white4, after$white5)
+whiteAfter <- data.frame(whiteAfter)
+whiteAfter <- whiteAfter %>%
+  group_by(whiteAfter) %>%
+  count()
+
+combined <- merge(whiteBefore, whiteAfter, by.x = "whiteBefore", by.y = "whiteAfter", all.y = TRUE)
+combined <- gather(combined, RuleChange, count, c(n.x, n.y))
+combined2 <- combined %>% 
+  group_by(RuleChange) %>%
+  mutate(freq = 100*count/sum(count, na.rm = TRUE))
+
+ggplot() +
+  geom_bar(data = combined2, aes(x = whiteBefore, y = freq, fill = RuleChange), color = "grey20", size = .25, position = "dodge", stat = "identity") +
+  ggtitle("White Ball Frequency") +
+  labs(x = "White Ball Number", y = "Frequency (%)") +
+  scale_x_continuous(breaks = seq(0, 69, 3)) +
+  theme(panel.background = element_rect("grey10"),
+        panel.grid.major = element_line("gray"),
+        panel.grid.minor = element_line("gray10")) + 
+  scale_fill_manual("Rule Change", labels = c("Before", "After"), values = c("n.x" = "springgreen4", "n.y" = "red")) 
+```
+
