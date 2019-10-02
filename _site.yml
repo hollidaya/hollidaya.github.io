@@ -4,13 +4,17 @@ output_dir: "."
 navbar:
   title: "Ashley Holliday"
   left:
+    - text: "Introduction"
+      href: Introduction.html
     - text: "Resume"
       href: resume.html
-    - text: "Sample Project"
+    - text: "Sample Data Science Project"
       href: Sample-Project.html
-    - text: "Behavioral-Interview"
+    - text: "Sample Project Analysis"
+      href: Sample-Project-Analysis.html
+    - text: "Behavioral Interview Questions"
       href: Behavioral-Interview-Questions.html
-    - text: "Sample Portfolio"
+    - text: "Artistic Portfolio"
       href: Portfolio.html
 
 

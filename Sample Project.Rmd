@@ -9,7 +9,6 @@ output:
     highlight: kate
 ---
 
-Last Updated: `r format(Sys.time(), "%A, %B %d, %Y")`
 
 <hr>
 

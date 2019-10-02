@@ -1,0 +1,33 @@
+---
+title: "Introduction"
+output: html_document
+---
+
+----------------------------------------
+
+####Key Knowledge and Skills:
+
+  -RStudio Proficiency - data filtering and manipulation, basic web design, data analysis and visualization
+  
+  -Excel Proficiency - project and budget analysis, loan amortization
+  
+  -Perserverence - I have taken the time to complete a degree while maintaining a full time job, I have also taken the time to continue my education in dance - going on 20 years.
+  
+  
+
+-----------------------------------------
+
+I have learned to be adaptable in a high-pressure environment, working to stay within time constraints when sudden changes arise. Through this, I am confident in my ability to learn to experience, and develop newly acquired skills without loss of efficiency. 
+
+Through my education, I have a strong foundation in statistics based code writing, using RStudio. Through this I am able to provide visualizations of statistical data analysis - a key component in risk analysis and finance-based decisions I’ve extended my utilization of code writing into other areas including graphic design and website construction*. I feel that being able to continue to grow with the use of new technologies in a role in keeping up with the demands of such a dynamic economy.
+
+While I have not decided definitely what career I would like to persue, I know that I would like to continue my education in mathematics on a higher level. I plan to complete some post-baccalaureate work and apply to graduate school in the future. I would like to take the time between graduation and then to explore possibilities while also gaining experience in fields I enjoy. 
+
+
+---------------------------------------------
+Though I have spent most of college focusing on my degree in mathematics, I have a deep appreciation and passion for the performing arts. I plan, after graduation, to take time away from school to pursue dance seriously. It has always been a dream of mine, and I am willing to explore my options as I continue to grow as a mathetitian and artist. In lieu of this, I have included a sample of my artistic portfolio. What this includes is a collection of photographs of my work in dance at Appalachian State University. For further inquiries, please feel free to contact me at ashley.p.holliday@gmail.com.
+
+
+
+*This site was created through the use of RStudio and GitHub. 
+
